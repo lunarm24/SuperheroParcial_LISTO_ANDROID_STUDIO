@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.superheroparcial.data.model.Superhero
-import com.example.superheroparcial.ui.components.HeroFullName
 import com.example.superheroparcial.ui.components.HeroImage
 import com.example.superheroparcial.ui.components.HeroName
 import com.example.superheroparcial.ui.theme.SuperheroTheme
@@ -75,7 +74,6 @@ fun SuperheroCard(
                 verticalArrangement = Arrangement.spacedBy(3.dp)
             ) {
                 HeroName(hero.name, fontSize = 17.sp)
-                HeroFullName(hero.fullName)
                 Text(
                     hero.publisher.ifBlank { "Editorial desconocida" },
                     color = MaterialTheme.colorScheme.primary,
@@ -94,7 +92,6 @@ fun SuperheroCardPreview() {
             Superhero(
                 id = 69,
                 name = "Batman",
-                fullName = "Bruce Wayne",
                 publisher = "DC Comics",
                 imageUrl = "",
                 stats = emptyMap()
