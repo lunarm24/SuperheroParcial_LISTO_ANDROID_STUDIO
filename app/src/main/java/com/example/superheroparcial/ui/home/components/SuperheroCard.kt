@@ -1,4 +1,4 @@
-package com.example.superheroparcial.ui.components
+package com.example.superheroparcial.ui.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,6 +11,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,17 +22,26 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.superheroparcial.data.model.Superhero
-import com.example.superheroparcial.ui.preview.PreviewSuperhero
-import com.example.superheroparcial.ui.theme.HeroPalette
+import com.example.superheroparcial.ui.components.HeroFullName
+import com.example.superheroparcial.ui.components.HeroImage
+import com.example.superheroparcial.ui.components.HeroName
+import com.example.superheroparcial.ui.theme.SuperheroTheme
 
 @Composable
-fun SuperheroCard(hero: Superhero, onClick: () -> Unit) {
+fun SuperheroCard(
+    hero: Superhero,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Card(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)
-            .border(BorderStroke(1.dp, HeroPalette.LavenderLight), RoundedCornerShape(20.dp)),
+        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)
+            .border(
+                BorderStroke(1.dp, MaterialTheme.colorScheme.primaryContainer),
+                RoundedCornerShape(20.dp)
+            ),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = HeroPalette.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(
@@ -51,18 +61,21 @@ fun SuperheroCard(hero: Superhero, onClick: () -> Unit) {
                 HeroFullName(hero.fullName)
                 Text(
                     hero.publisher.ifBlank { "Editorial desconocida" },
-                    color = HeroPalette.Lavender,
+                    color = MaterialTheme.colorScheme.primary,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold
                 )
             }
             Text(
                 text = "VER PERFIL",
-                color = HeroPalette.Lavender,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = 9.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.align(Alignment.CenterVertically)
-                    .background(HeroPalette.LavenderLight, RoundedCornerShape(20.dp))
+                    .background(
+                        MaterialTheme.colorScheme.primaryContainer,
+                        RoundedCornerShape(20.dp)
+                    )
                     .padding(horizontal = 9.dp, vertical = 7.dp)
             )
         }
@@ -70,4 +83,18 @@ fun SuperheroCard(hero: Superhero, onClick: () -> Unit) {
 }
 @Preview(showBackground = true)
 @Composable
-fun SuperheroCardPreview() { SuperheroCard(PreviewSuperhero.batman, {}) }
+fun SuperheroCardPreview() {
+    SuperheroTheme {
+        SuperheroCard(
+            Superhero(
+                id = 69,
+                name = "Batman",
+                fullName = "Bruce Wayne",
+                publisher = "DC Comics",
+                imageUrl = "",
+                stats = emptyMap()
+            ),
+            onClick = {}
+        )
+    }
+}

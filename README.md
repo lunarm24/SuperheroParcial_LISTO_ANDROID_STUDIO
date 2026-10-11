@@ -13,7 +13,14 @@
 ## Incluido
 - `gradlew.bat`, `gradlew`, `gradle/wrapper/gradle-wrapper.jar` y `gradle-wrapper.properties`.
 - **Nota:** el JAR incluido es un lanzador Java auto-contenido que descarga y ejecuta la **distribución oficial** de Gradle 8.10.2. No es el JAR estándar generado por `gradle wrapper`, porque ese binario no estaba disponible en el entorno de generación. Los comandos `gradlew.bat` funcionan con el mismo formato habitual. Se necesita Internet en la primera ejecución.
-- MVVM, UiState, ViewModel por pantalla, Retrofit, DTO, DataSource, Repository, `Result`, Hilt y navegación centralizada.
+- MVVM, un `UiState` y un `ViewModel` por pantalla, Retrofit, DTO y mapper en `data/DTO`,
+  `DataSource`, Repository, `Result`, Hilt y navegación centralizada con rutas `sealed`.
+- `SuperheroApp.kt` contiene el composable raíz y está junto a `MainActivity.kt`; la escala
+  tipográfica global está aumentada un 8%.
+- Componentes compartidos en `ui/components` y componentes propios dentro de
+  `ui/home/components` y `ui/detail/components`. Cada componente visual tiene su `@Preview`.
+- Un `Scaffold` en la navegación principal y tema Material 3 claro/oscuro en
+  `ui/theme/Color.kt` y `ui/theme/Theme.kt`.
 - Un archivo `.kt` por componente visual; `@Preview` en el mismo archivo que su composable.
 - Lista de superhéroes con búsqueda, tarjetas compactas y perfil con datos de apariencia,
   biografía, ocupación, conexiones y estadísticas. La interfaz usa una paleta lila/coral/crema.
@@ -23,4 +30,5 @@
 Abre `ui/home/HomeScreen.kt` o `ui/detail/DetailScreen.kt` y selecciona Split o Design; pulsa Build & Refresh.
 
 ## Estado de validación
-Se verificó la compilación Android con `.\gradlew.bat :app:assembleDebug`. No se ejecutó la aplicación en un emulador.
+Se verificaron la compilación y Android lint con
+`.\gradlew.bat :app:assembleDebug :app:lintDebug`. No se ejecutó la aplicación en un emulador.

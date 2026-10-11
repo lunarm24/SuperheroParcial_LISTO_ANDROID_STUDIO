@@ -1,4 +1,4 @@
-package com.example.superheroparcial.ui.components
+package com.example.superheroparcial.ui.detail.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,25 +14,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.superheroparcial.ui.theme.HeroPalette
+import com.example.superheroparcial.ui.theme.SuperheroTheme
 
 @Composable
-fun StatisticItem(label: String, value: Int) {
-    Column(Modifier.padding(vertical = 9.dp), verticalArrangement = Arrangement.spacedBy(7.dp)) {
+fun StatisticItem(label: String, value: Int, modifier: Modifier = Modifier) {
+    Column(modifier.padding(vertical = 9.dp), verticalArrangement = Arrangement.spacedBy(7.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(label.replaceFirstChar { it.uppercase() }, color = HeroPalette.Ink,
+            Text(label.replaceFirstChar { it.uppercase() }, color = MaterialTheme.colorScheme.onSurface,
                 fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
-            Text("${value.coerceIn(0, 100)} / 100", color = HeroPalette.Lavender,
+            Text("${value.coerceIn(0, 100)} / 100", color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold, fontSize = 12.sp)
         }
         LinearProgressIndicator(
             progress = { (value / 100f).coerceIn(0f, 1f) },
             modifier = Modifier.fillMaxWidth(),
-            color = HeroPalette.Lavender,
-            trackColor = HeroPalette.Track
+            color = MaterialTheme.colorScheme.primary,
+            trackColor = MaterialTheme.colorScheme.outlineVariant
         )
     }
 }
 @Preview(showBackground = true)
 @Composable
-fun StatisticItemPreview() { StatisticItem("Intelligence", 90) }
+fun StatisticItemPreview() {
+    SuperheroTheme { StatisticItem("Intelligence", 90) }
+}

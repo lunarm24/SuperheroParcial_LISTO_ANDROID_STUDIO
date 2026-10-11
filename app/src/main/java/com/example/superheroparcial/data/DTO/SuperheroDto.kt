@@ -1,4 +1,4 @@
-package com.example.superheroparcial.data.model
+package com.example.superheroparcial.data.DTO
 import com.google.gson.annotations.SerializedName
 data class SuperheroDto(
     val id: Int,

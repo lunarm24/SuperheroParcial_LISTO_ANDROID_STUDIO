@@ -1,4 +1,4 @@
-package com.example.superheroparcial.ui.components
+package com.example.superheroparcial.ui.detail.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,13 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.superheroparcial.ui.theme.SuperheroTheme
 import com.example.superheroparcial.data.model.Superhero
-import com.example.superheroparcial.ui.preview.PreviewSuperhero
 
 @Composable
-fun HeroInformation(hero: Superhero) {
+fun HeroInformation(hero: Superhero, modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+        modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         HeroDetailSection(
@@ -46,4 +46,17 @@ fun HeroInformation(hero: Superhero) {
 
 @Preview(showBackground = true)
 @Composable
-fun HeroInformationPreview() { HeroInformation(PreviewSuperhero.batman) }
+fun HeroInformationPreview() {
+    SuperheroTheme {
+        HeroInformation(
+            Superhero(
+                id = 69,
+                name = "Batman",
+                fullName = "Bruce Wayne",
+                publisher = "DC Comics",
+                imageUrl = "",
+                stats = emptyMap()
+            )
+        )
+    }
+}

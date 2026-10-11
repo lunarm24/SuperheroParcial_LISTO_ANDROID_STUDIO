@@ -11,13 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.superheroparcial.ui.components.ErrorMessage
-import com.example.superheroparcial.ui.components.HomeEmptyState
-import com.example.superheroparcial.ui.components.HomeTitle
-import com.example.superheroparcial.ui.components.HeroSearchField
 import com.example.superheroparcial.ui.components.LoadingIndicator
-import com.example.superheroparcial.ui.components.SuperheroList
-import com.example.superheroparcial.ui.preview.PreviewSuperhero
-import com.example.superheroparcial.ui.theme.HeroPalette
+import com.example.superheroparcial.ui.home.components.HomeEmptyState
+import com.example.superheroparcial.ui.home.components.HomeTitle
+import com.example.superheroparcial.ui.home.components.HeroSearchField
+import com.example.superheroparcial.ui.home.components.SuperheroList
+import com.example.superheroparcial.data.model.Superhero
+import com.example.superheroparcial.ui.theme.SuperheroTheme
 
 @Composable
 fun HomeScreen(
@@ -27,7 +27,7 @@ fun HomeScreen(
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier.fillMaxSize().background(HeroPalette.Cream)) {
+    Column(modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         HomeTitle()
         HeroSearchField(
             value = state.searchQuery,
@@ -48,9 +48,21 @@ fun HomeScreen(
 @Preview(showBackground = true, showSystemUi = false)
 @Composable
 fun HomeScreenPreview() {
-    MaterialTheme {
+    SuperheroTheme {
         HomeScreen(
-            HomeUiState(heroes = PreviewSuperhero.heroes, isLoading = false),
+            HomeUiState(
+                heroes = listOf(
+                    Superhero(
+                        id = 69,
+                        name = "Batman",
+                        fullName = "Bruce Wayne",
+                        publisher = "DC Comics",
+                        imageUrl = "",
+                        stats = emptyMap()
+                    )
+                ),
+                isLoading = false
+            ),
             onHeroClick = {},
             onSearchQueryChange = {},
             onRetry = {}

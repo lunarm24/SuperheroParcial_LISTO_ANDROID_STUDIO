@@ -2,7 +2,6 @@ package com.example.superheroparcial.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.superheroparcial.data.model.Superhero
 import com.example.superheroparcial.data.repository.SuperheroRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,12 +9,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-data class DetailUiState(
-    val hero: Superhero? = null,
-    val isLoading: Boolean = true,
-    val error: String? = null
-)
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
