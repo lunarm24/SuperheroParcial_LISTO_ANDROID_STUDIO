@@ -18,10 +18,10 @@
 - `SuperheroApp.kt` contiene el composable raíz y está junto a `MainActivity.kt`; la escala
   tipográfica global está aumentada un 8%.
 - Componentes compartidos en `ui/components` y componentes propios dentro de
-  `ui/home/components` y `ui/detail/components`. Cada componente visual tiene su `@Preview`.
+  `ui/home/components` y `ui/detail/components`. Los composables relacionados pueden compartir
+  archivo y mantienen sus `@Preview` junto a su implementación.
 - Un `Scaffold` en la navegación principal y tema Material 3 claro/oscuro en
   `ui/theme/Color.kt` y `ui/theme/Theme.kt`.
-- Un archivo `.kt` por componente visual; `@Preview` en el mismo archivo que su composable.
 - Lista de superhéroes con búsqueda, tarjetas compactas y perfil con datos de apariencia,
   biografía, ocupación, conexiones y estadísticas. La interfaz usa una paleta lila/coral/crema.
 - API: https://akabab.github.io/superhero-api/ (lista y consulta por ID).

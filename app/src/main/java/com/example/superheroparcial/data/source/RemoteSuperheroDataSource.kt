@@ -3,12 +3,16 @@ import com.example.superheroparcial.data.DTO.SuperheroDto
 import com.example.superheroparcial.data.remote.SuperheroApi
 import javax.inject.Inject
 
-class RemoteSuperheroDataSource @Inject constructor(private val api: SuperheroApi) : SuperheroDataSource {
-    override suspend fun getAll(): List<SuperheroDto> {
-        return api.getAll()
-    }
+interface SuperheroDataSource {
+    suspend fun getAll(): List<SuperheroDto>
 
-    override suspend fun getById(id: Int): SuperheroDto {
-        return api.getById(id)
-    }
+    suspend fun getById(id: Int): SuperheroDto
+}
+
+class RemoteSuperheroDataSource @Inject constructor(
+    private val api: SuperheroApi
+) : SuperheroDataSource {
+    override suspend fun getAll(): List<SuperheroDto> = api.getAll()
+
+    override suspend fun getById(id: Int): SuperheroDto = api.getById(id)
 }
