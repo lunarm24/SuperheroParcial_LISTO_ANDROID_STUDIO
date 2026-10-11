@@ -7,7 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import com.example.superheroparcial.navigation.AppNavigation
 import com.example.superheroparcial.ui.theme.HeroPalette
 
@@ -23,9 +26,17 @@ fun AppContent() {
             onBackground = HeroPalette.Ink
         )
     ) {
-        Scaffold(containerColor = HeroPalette.Cream) { padding ->
-            Box(Modifier.fillMaxSize().padding(padding)) {
-                AppNavigation(modifier = Modifier.fillMaxSize())
+        val systemDensity = LocalDensity.current
+        CompositionLocalProvider(
+            LocalDensity provides Density(
+                density = systemDensity.density,
+                fontScale = systemDensity.fontScale * 1.08f
+            )
+        ) {
+            Scaffold(containerColor = HeroPalette.Cream) { padding ->
+                Box(Modifier.fillMaxSize().padding(padding)) {
+                    AppNavigation(modifier = Modifier.fillMaxSize())
+                }
             }
         }
     }
