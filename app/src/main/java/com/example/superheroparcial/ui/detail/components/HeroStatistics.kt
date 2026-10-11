@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LinearProgressIndicator
@@ -15,59 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.superheroparcial.data.model.Superhero
-import com.example.superheroparcial.ui.components.HeroFullName
-import com.example.superheroparcial.ui.components.HeroImage
-import com.example.superheroparcial.ui.components.HeroName
-import com.example.superheroparcial.ui.theme.SuperheroTheme
-
-@Composable
-fun HeroHeader(hero: Superhero, modifier: Modifier = Modifier) {
-    Column(
-        modifier.fillMaxWidth().padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        HeroImage(
-            url = hero.imageUrl,
-            name = hero.name,
-            modifier = Modifier.fillMaxWidth().height(280.dp)
-        )
-        Column(
-            Modifier.fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(20.dp))
-                .padding(18.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-            HeroName(hero.name)
-            HeroFullName(hero.fullName)
-            Text(
-                hero.publisher.ifBlank { "Editorial desconocida" },
-                color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HeroHeaderPreview() {
-    SuperheroTheme {
-        HeroHeader(
-            Superhero(
-                id = 69,
-                name = "Batman",
-                fullName = "Bruce Wayne",
-                publisher = "DC Comics",
-                imageUrl = "",
-                stats = emptyMap()
-            )
-        )
-    }
-}
 
 @Composable
 fun HeroStatistics(stats: Map<String, Int>, modifier: Modifier = Modifier) {

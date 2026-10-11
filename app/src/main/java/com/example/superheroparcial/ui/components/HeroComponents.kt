@@ -2,6 +2,8 @@ package com.example.superheroparcial.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -21,28 +23,25 @@ import coil.compose.AsyncImage
 @Composable
 fun HeroName(
     name: String,
+    fullName: String = "",
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 23.sp
 ) {
-    Text(
-        name,
-        modifier = modifier,
-        fontSize = fontSize,
-        fontWeight = FontWeight.Black,
-        color = MaterialTheme.colorScheme.onSurface
-    )
-}
-
-@Composable
-fun HeroFullName(fullName: String, modifier: Modifier = Modifier) {
-    if (fullName.isNotBlank()) {
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(3.dp)) {
         Text(
-            fullName,
-            modifier = modifier,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            fontWeight = FontWeight.Medium,
-            fontSize = 13.sp
+            name,
+            fontSize = fontSize,
+            fontWeight = FontWeight.Black,
+            color = MaterialTheme.colorScheme.onSurface
         )
+        if (fullName.isNotBlank()) {
+            Text(
+                fullName,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontWeight = FontWeight.Medium,
+                fontSize = 13.sp
+            )
+        }
     }
 }
 
