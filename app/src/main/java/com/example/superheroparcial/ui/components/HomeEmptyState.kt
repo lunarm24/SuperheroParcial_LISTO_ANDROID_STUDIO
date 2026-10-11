@@ -21,7 +21,6 @@ fun HomeEmptyState(message: String) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text("✦", color = HeroPalette.Lavender, fontSize = 38.sp)
         Text(
             text = message,
             color = HeroPalette.Ink,

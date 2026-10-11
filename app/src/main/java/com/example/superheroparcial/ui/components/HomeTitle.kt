@@ -1,8 +1,6 @@
 package com.example.superheroparcial.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,24 +22,28 @@ fun HomeTitle() {
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.fillMaxWidth()
-                .background(HeroPalette.Lavender)
-                .padding(horizontal = 20.dp, vertical = 14.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(HeroPalette.Lavender, Color(0xFF9B83E8))
+                    )
+                )
+                .padding(horizontal = 22.dp, vertical = 25.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("✦", color = HeroPalette.White, fontSize = 20.sp)
-            Text(
-                text = "Heroes",
-                color = HeroPalette.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
+            Column {
+                Text("UNIVERSO", color = HeroPalette.LavenderLight,
+                    fontWeight = FontWeight.Bold, fontSize = 11.sp, letterSpacing = 2.sp)
+                Text("Héroes", color = HeroPalette.White,
+                    fontWeight = FontWeight.Black, fontSize = 30.sp)
+                Text("Descubre quién protege el universo",
+                    color = HeroPalette.White, fontSize = 14.sp)
+            }
         }
         Text(
-            text = "Descubre los héroes del universo",
+            text = "Todos tus personajes favoritos, en un solo lugar",
             color = HeroPalette.Muted,
-            fontSize = 14.sp,
-            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 16.dp)
+            fontSize = 13.sp,
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 18.dp)
         )
     }
 }

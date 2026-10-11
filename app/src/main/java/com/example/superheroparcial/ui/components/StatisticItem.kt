@@ -27,7 +27,7 @@ fun StatisticItem(label: String, value: Int) {
         LinearProgressIndicator(
             progress = { (value / 100f).coerceIn(0f, 1f) },
             modifier = Modifier.fillMaxWidth(),
-            color = HeroPalette.Coral,
+            color = HeroPalette.Lavender,
             trackColor = HeroPalette.Track
         )
     }

@@ -19,7 +19,7 @@ fun LoadingIndicator() {
     Column(Modifier.fillMaxWidth().padding(48.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(18.dp)) {
-        CircularProgressIndicator(color = HeroPalette.Coral)
+        CircularProgressIndicator(color = HeroPalette.Lavender)
         Text("Reuniendo superpoderes…", color = HeroPalette.Ink,
             fontWeight = FontWeight.SemiBold)
     }

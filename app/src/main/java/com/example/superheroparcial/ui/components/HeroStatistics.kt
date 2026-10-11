@@ -21,9 +21,9 @@ fun HeroStatistics(stats: Map<String, Int>) {
     Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp)
         .background(HeroPalette.White, RoundedCornerShape(24.dp)).padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp)) {
-        Text("POWER LEVELS  ⚡", color = HeroPalette.Coral,
+        Text("ESTADÍSTICAS", color = HeroPalette.Lavender,
             fontWeight = FontWeight.ExtraBold, fontSize = 11.sp, letterSpacing = 1.sp)
-        Text("Sus superpoderes", color = HeroPalette.Ink,
+        Text("Nivel de poder", color = HeroPalette.Ink,
             fontWeight = FontWeight.Black, fontSize = 22.sp)
         stats.forEach { (label, value) -> StatisticItem(label, value) }
     }

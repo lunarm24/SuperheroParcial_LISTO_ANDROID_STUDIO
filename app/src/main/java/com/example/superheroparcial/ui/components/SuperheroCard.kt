@@ -1,11 +1,14 @@
 package com.example.superheroparcial.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -25,10 +28,11 @@ import com.example.superheroparcial.ui.theme.HeroPalette
 fun SuperheroCard(hero: Superhero, onClick: () -> Unit) {
     Card(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp),
-        shape = RoundedCornerShape(16.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)
+            .border(BorderStroke(1.dp, HeroPalette.LavenderLight), RoundedCornerShape(20.dp)),
+        shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = HeroPalette.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(10.dp),
@@ -43,23 +47,23 @@ fun SuperheroCard(hero: Superhero, onClick: () -> Unit) {
                 modifier = Modifier.weight(1f).align(Alignment.CenterVertically),
                 verticalArrangement = Arrangement.spacedBy(3.dp)
             ) {
-                HeroName(hero.name, fontSize = 16.sp)
+                HeroName(hero.name, fontSize = 17.sp)
                 HeroFullName(hero.fullName)
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text("✦", color = HeroPalette.Lavender, fontSize = 12.sp)
-                    Text(
-                        hero.publisher.ifBlank { "Editorial desconocida" },
-                        color = HeroPalette.Muted,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
+                Text(
+                    hero.publisher.ifBlank { "Editorial desconocida" },
+                    color = HeroPalette.Lavender,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
             Text(
-                text = "›",
-                color = HeroPalette.Muted,
-                fontSize = 24.sp,
+                text = "VER PERFIL",
+                color = HeroPalette.Lavender,
+                fontSize = 9.sp,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.align(Alignment.CenterVertically)
+                    .background(HeroPalette.LavenderLight, RoundedCornerShape(20.dp))
+                    .padding(horizontal = 9.dp, vertical = 7.dp)
             )
         }
     }

@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.superheroparcial.data.model.Superhero
 import com.example.superheroparcial.ui.preview.PreviewSuperhero
-import com.example.superheroparcial.ui.theme.HeroPalette
 
 @Composable
 fun HeroInformation(hero: Superhero) {
@@ -40,13 +39,6 @@ fun HeroInformation(hero: Superhero) {
                 "Ocupación" to hero.work.occupation,
                 "Base" to hero.work.base,
                 "Alias" to hero.biography.aliases.joinToString(", ")
-            )
-        )
-        HeroDetailSection(
-            title = "Conexiones",
-            details = listOf(
-                "Afiliaciones" to hero.connections.groupAffiliation,
-                "Familiares" to hero.connections.relatives
             )
         )
     }

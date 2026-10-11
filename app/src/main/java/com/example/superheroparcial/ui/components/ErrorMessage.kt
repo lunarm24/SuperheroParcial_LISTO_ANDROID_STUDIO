@@ -22,8 +22,7 @@ fun ErrorMessage(message: String, onRetry: () -> Unit) {
     Column(Modifier.fillMaxWidth().padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        Text("✧", fontSize = 48.sp, color = HeroPalette.Coral)
-        Text("¡Houston, tenemos un problema!", color = HeroPalette.Ink,
+        Text("No se pudo cargar el contenido", color = HeroPalette.Ink,
             fontSize = 19.sp, fontWeight = FontWeight.Bold)
         Text(message, color = HeroPalette.Muted)
         Button(onClick = onRetry, shape = RoundedCornerShape(16.dp),
