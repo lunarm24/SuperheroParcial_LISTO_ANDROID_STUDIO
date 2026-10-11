@@ -20,48 +20,70 @@ import com.example.superheroparcial.ui.detail.DetailViewModel
 import com.example.superheroparcial.ui.home.HomeScreen
 import com.example.superheroparcial.ui.home.HomeViewModel
 
-sealed class Routes(val route: String) {
-    data object Home : Routes("home")
-    data object Detail : Routes("detail/{heroId}") {
-        fun create(heroId: Int) = "detail/$heroId"
-    }
-}
-
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
+
     val navController = rememberNavController()
+
     Scaffold(
         modifier = modifier,
         containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
+
         NavHost(
             navController = navController,
-            startDestination = Routes.Home.route,
+            startDestination = Screen.Home.route,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            composable(Routes.Home.route) {
+
+            composable(Screen.Home.route) {
+
                 val viewModel: HomeViewModel = hiltViewModel()
+
                 val state by viewModel.uiState.collectAsStateWithLifecycle()
+
                 HomeScreen(
                     state = state,
-                    onHeroClick = { navController.navigate(Routes.Detail.create(it)) },
+                    onHeroClick = { heroId ->
+                        navController.navigate(
+                            Screen.Detail.createRoute(heroId)
+                        )
+                    },
                     onRetry = viewModel::loadHeroes
                 )
             }
+
             composable(
-                Routes.Detail.route,
-                arguments = listOf(navArgument("heroId") { type = NavType.IntType })
+                route = Screen.Detail.route,
+                arguments = listOf(
+                    navArgument("heroId") {
+                        type = NavType.IntType
+                    }
+                )
             ) { entry ->
-                val id = requireNotNull(entry.arguments).getInt("heroId")
+
+                val heroId = requireNotNull(
+                    entry.arguments
+                ).getInt("heroId")
+
                 val viewModel: DetailViewModel = hiltViewModel()
+
                 val state by viewModel.uiState.collectAsStateWithLifecycle()
-                LaunchedEffect(id) { viewModel.loadHero(id) }
+
+                LaunchedEffect(heroId) {
+                    viewModel.loadHero(heroId)
+                }
+
                 DetailScreen(
                     state = state,
-                    onBack = { navController.popBackStack() },
-                    onRetry = { viewModel.loadHero(id) }
+                    onBack = {
+                        navController.popBackStack()
+                    },
+                    onRetry = {
+                        viewModel.loadHero(heroId)
+                    }
                 )
             }
         }
