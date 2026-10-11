@@ -62,6 +62,7 @@ fun HomeScreenPreview() {
                     Superhero(
                         id = 69,
                         name = "Batman",
+                        fullName = "Bruce Wayne",
                         publisher = "DC Comics",
                         imageUrl = "",
                         stats = emptyMap()

@@ -11,6 +11,7 @@ data class SuperheroDto(
 )
 
 data class BiographyDto(
+    val fullName: String?,
     val publisher: String?
 )
 
@@ -29,6 +30,7 @@ fun SuperheroDto.toSuperheroInfo(): Superhero {
     return Superhero(
         id = id,
         name = name.orEmpty(),
+        fullName = biography?.fullName.orEmpty(),
         publisher = biography?.publisher.orEmpty(),
         imageUrl = imageUrl,
         stats = stats

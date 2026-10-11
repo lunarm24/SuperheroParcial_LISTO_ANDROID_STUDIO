@@ -77,6 +77,7 @@ fun DetailScreenPreview() {
                 hero = Superhero(
                     id = 69,
                     name = "Batman",
+                    fullName = "Bruce Wayne",
                     publisher = "DC Comics",
                     imageUrl = "",
                     stats = mapOf("intelligence" to 100, "strength" to 26)

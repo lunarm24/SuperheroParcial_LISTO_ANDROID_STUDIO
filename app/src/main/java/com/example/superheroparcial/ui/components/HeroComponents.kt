@@ -34,6 +34,19 @@ fun HeroName(
 }
 
 @Composable
+fun HeroFullName(fullName: String, modifier: Modifier = Modifier) {
+    if (fullName.isNotBlank()) {
+        Text(
+            fullName,
+            modifier = modifier,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontWeight = FontWeight.Medium,
+            fontSize = 13.sp
+        )
+    }
+}
+
+@Composable
 fun HeroImage(
     url: String,
     name: String,
