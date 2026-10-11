@@ -31,19 +31,17 @@ fun HomeTitle() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
-                Text("UNIVERSO", color = HeroPalette.LavenderLight,
-                    fontWeight = FontWeight.Bold, fontSize = 11.sp, letterSpacing = 2.sp)
                 Text("Héroes", color = HeroPalette.White,
-                    fontWeight = FontWeight.Black, fontSize = 30.sp)
+                    fontWeight = FontWeight.Black, fontSize = 32.sp)
                 Text("Descubre quién protege el universo",
-                    color = HeroPalette.White, fontSize = 14.sp)
+                    color = HeroPalette.White, fontSize = 15.sp)
             }
         }
         Text(
             text = "Todos tus personajes favoritos, en un solo lugar",
             color = HeroPalette.Muted,
-            fontSize = 13.sp,
-            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 18.dp)
+            fontSize = 14.sp,
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 14.dp)
         )
     }
 }

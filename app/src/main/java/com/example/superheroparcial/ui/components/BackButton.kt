@@ -17,8 +17,8 @@ import com.example.superheroparcial.ui.theme.HeroPalette
 fun BackButton(onClick: () -> Unit) {
     Row(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
         .background(HeroPalette.White, RoundedCornerShape(50))
-        .clickable(onClick = onClick).padding(horizontal = 16.dp, vertical = 10.dp)) {
-        Text("VOLVER A HÉROES", color = HeroPalette.Lavender,
+        .clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 10.dp)) {
+        Text("←  VOLVER A HÉROES", color = HeroPalette.Lavender,
             fontWeight = FontWeight.ExtraBold)
     }
 }
