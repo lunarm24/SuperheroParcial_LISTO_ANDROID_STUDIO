@@ -52,9 +52,3 @@ fun DetailScreen(
 fun DetailScreenPreview() {
     DetailScreen(DetailUiState(hero = PreviewSuperhero.batman, isLoading = false), {}, {})
 }
-@Preview(showBackground = true)
-@Composable
-fun DetailLoadingPreview() { DetailScreen(DetailUiState(isLoading = true), {}, {}) }
-@Preview(showBackground = true)
-@Composable
-fun DetailErrorPreview() { DetailScreen(DetailUiState(isLoading = false, error = "Sin conexión"), {}, {}) }

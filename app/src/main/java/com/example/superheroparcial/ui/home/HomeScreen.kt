@@ -57,13 +57,3 @@ fun HomeScreenPreview() {
         )
     }
 }
-@Preview(showBackground = true)
-@Composable
-fun HomeLoadingPreview() {
-    HomeScreen(HomeUiState(isLoading = true), {}, {}, {})
-}
-@Preview(showBackground = true)
-@Composable
-fun HomeErrorPreview() {
-    HomeScreen(HomeUiState(isLoading = false, error = "Sin conexión"), {}, {}, {})
-}
