@@ -14,7 +14,16 @@ import com.example.superheroparcial.ui.home.HomeScreen
 import com.example.superheroparcial.ui.home.HomeViewModel
 import com.example.superheroparcial.ui.detail.DetailScreen
 import com.example.superheroparcial.ui.detail.DetailViewModel
-@Composable fun AppNavigation(modifier: Modifier = Modifier) {
+
+sealed class Routes(val route: String) {
+    data object Home : Routes("home")
+    data object Detail : Routes("detail/{heroId}") {
+        fun create(heroId: Int) = "detail/$heroId"
+    }
+}
+
+@Composable
+fun AppNavigation(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     NavHost(navController, startDestination = Routes.Home.route, modifier = modifier) {
         composable(Routes.Home.route) {
