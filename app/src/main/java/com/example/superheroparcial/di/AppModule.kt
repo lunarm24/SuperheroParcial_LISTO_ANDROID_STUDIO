@@ -17,32 +17,26 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder()
+    fun provideRetrofit(): Retrofit =
+        Retrofit.Builder()
             .baseUrl("https://akabab.github.io/superhero-api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
 
     @Provides
     @Singleton
-    fun provideSuperheroService(retrofit: Retrofit): SuperheroApi {
-        return retrofit.create(SuperheroApi::class.java)
-    }
+    fun provideSuperheroService(retrofit: Retrofit): SuperheroApi =
+        retrofit.create(SuperheroApi::class.java)
 
     @Provides
     @Singleton
     fun provideSuperheroDataSource(
         source: RemoteSuperheroDataSource
-    ): SuperheroDataSource {
-        return source
-    }
+    ): SuperheroDataSource = source
 
     @Provides
     @Singleton
     fun provideSuperheroRepository(
         repository: SuperheroRepositoryImpl
-    ): SuperheroRepository {
-        return repository
-    }
+    ): SuperheroRepository = repository
 }

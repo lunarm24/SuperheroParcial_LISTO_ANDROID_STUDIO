@@ -1,10 +1,20 @@
 package com.example.superheroparcial.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+
+val HeroInk = Color(0xFF251A3D)
+val HeroMuted = Color(0xFF786F87)
+val HeroLavender = Color(0xFF7554D6)
+val HeroLavenderLight = Color(0xFFEAE2FF)
+val HeroCoral = Color(0xFFB394F5)
+val HeroPeach = Color(0xFFF4ECFF)
+val HeroCream = Color(0xFFF8F6FC)
+val HeroWhite = Color(0xFFFFFFFF)
+val HeroLilacSurface = Color(0xFFF0EBFA)
+val HeroTrack = Color(0xFFE7E1F0)
 
 private val LightColors = lightColorScheme(
     primary = HeroLavender,
@@ -27,35 +37,12 @@ private val LightColors = lightColorScheme(
     outlineVariant = HeroTrack
 )
 
-private val DarkColors = darkColorScheme(
-    primary = HeroDarkLavender,
-    onPrimary = HeroDarkCream,
-    primaryContainer = HeroDarkLavenderContainer,
-    onPrimaryContainer = HeroDarkInk,
-    secondary = HeroDarkCoral,
-    onSecondary = HeroDarkCream,
-    secondaryContainer = HeroDarkLavenderContainer,
-    onSecondaryContainer = HeroDarkInk,
-    tertiary = HeroDarkCoral,
-    tertiaryContainer = HeroDarkPeach,
-    onTertiaryContainer = HeroDarkInk,
-    background = HeroDarkCream,
-    onBackground = HeroDarkInk,
-    surface = HeroDarkWhite,
-    onSurface = HeroDarkInk,
-    surfaceVariant = HeroDarkLilacSurface,
-    onSurfaceVariant = HeroDarkMuted,
-    outlineVariant = HeroDarkTrack
-)
-
 @Composable
 fun SuperheroTheme(
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (isSystemInDarkTheme()) DarkColors else LightColors
-
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = LightColors,
         content = content
     )
 }

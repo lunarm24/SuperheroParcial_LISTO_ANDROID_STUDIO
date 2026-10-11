@@ -14,10 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.superheroparcial.ui.theme.SuperheroTheme
 
 @Composable
 fun LoadingIndicator(modifier: Modifier = Modifier) {
@@ -33,12 +31,6 @@ fun LoadingIndicator(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.SemiBold
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LoadingIndicatorPreview() {
-    SuperheroTheme { LoadingIndicator() }
 }
 
 @Composable
@@ -69,10 +61,4 @@ fun ErrorMessage(
             Text("INTENTAR DE NUEVO")
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ErrorMessagePreview() {
-    SuperheroTheme { ErrorMessage("Sin conexión", {}) }
 }

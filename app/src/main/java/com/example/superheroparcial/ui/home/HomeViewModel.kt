@@ -21,10 +21,6 @@ class HomeViewModel @Inject constructor(
         loadHeroes()
     }
 
-    fun updateSearchQuery(query: String) {
-        _uiState.update { it.copy(searchQuery = query) }
-    }
-
     fun loadHeroes() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }

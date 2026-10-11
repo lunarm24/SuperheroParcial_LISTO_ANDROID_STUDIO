@@ -47,7 +47,6 @@ fun AppNavigation(modifier: Modifier = Modifier) {
                 HomeScreen(
                     state = state,
                     onHeroClick = { navController.navigate(Routes.Detail.create(it)) },
-                    onSearchQueryChange = viewModel::updateSearchQuery,
                     onRetry = viewModel::loadHeroes
                 )
             }

@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.superheroparcial.ui.components.ErrorMessage
 import com.example.superheroparcial.ui.detail.components.HeroHeader
-import com.example.superheroparcial.ui.detail.components.HeroInformation
 import com.example.superheroparcial.ui.detail.components.HeroStatistics
 import com.example.superheroparcial.ui.components.LoadingIndicator
 import com.example.superheroparcial.data.model.Superhero
@@ -46,7 +45,6 @@ fun DetailScreen(
             state.hero != null -> {
                 HeroHeader(state.hero)
                 HeroStatistics(state.hero.stats)
-                HeroInformation(state.hero)
             }
             else -> ErrorMessage("No encontramos la información del superhéroe.", onRetry)
         }
